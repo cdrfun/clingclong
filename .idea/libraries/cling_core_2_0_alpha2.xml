@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cling-core-2.0-alpha2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/cling-core-2.0-alpha2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

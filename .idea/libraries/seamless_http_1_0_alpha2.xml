@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="seamless-http-1.0-alpha2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/seamless-http-1.0-alpha2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/seamless-util-1.0-alpha2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/seamless-xml-1.0-alpha2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,8 +1,10 @@
 package cc.scholle;
 
+import cc.scholle.Renderer.RendererService;
 import org.fourthline.cling.model.message.header.STAllHeader;
 import org.fourthline.cling.model.meta.LocalDevice;
 import org.fourthline.cling.model.meta.RemoteDevice;
+import org.fourthline.cling.model.types.UDN;
 import org.fourthline.cling.registry.Registry;
 import org.fourthline.cling.registry.RegistryListener;
 import org.fourthline.cling.*;
@@ -14,8 +16,11 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
+        final RendererService rService = new RendererService();
+
         // UPnP discovery is asynchronous, we need a callback
-        RegistryListener listener = new RegistryListener() {
+        RegistryListener listener;
+        listener = new RegistryListener() {
 
             public void remoteDeviceDiscoveryStarted(Registry registry,
                                                      RemoteDevice device) {
@@ -34,14 +39,18 @@ public class Main {
 
             public void remoteDeviceAdded(Registry registry, RemoteDevice device) {
                 System.out.println(
-                        "Remote device available: " + device.getDisplayString()
+                        "Remote device available: " + device.getDisplayString() + " " + device.getIdentity().getUdn().toString()
+
                 );
+
+                UDN search = new UDN("0aba9500-00b4-1000-a1a9-1c5a3e4b99bb");
+                UDN found = device.getIdentity().getUdn();
+                if(search.equals(found)) {
+                    rService.addDevice(device);
+                }
             }
 
             public void remoteDeviceUpdated(Registry registry, RemoteDevice device) {
-                System.out.println(
-                        "Remote device updated: " + device.getDisplayString()
-                );
             }
 
             public void remoteDeviceRemoved(Registry registry, RemoteDevice device) {
